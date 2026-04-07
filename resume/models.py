@@ -6,7 +6,8 @@ from django.contrib.auth.models import User
 class ResumeModel(models.Model):
     resume_file = models.FileField(upload_to="resume/")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
-    extracted_text = models.TextField()
+    extracted_text = models.TextField(blank = True)
+    cleaned_text = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class JobDescription(models.Model):

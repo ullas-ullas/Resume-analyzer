@@ -15,5 +15,5 @@ class UserSerializer(serializers.ModelSerializer):
 class ResumeSerialzier(serializers.ModelSerializer):
     class Meta:
         model = ResumeModel
-        fields = ["id", "resume_file", "extracted_text", "created_at"]
-        read_only_fields = ["extracted_text"]
+        fields = ["id", "resume_file", "extracted_text", "created_at", "cleaned_text"]
+        read_only_fields = ["extracted_text", "cleaned_text"]
