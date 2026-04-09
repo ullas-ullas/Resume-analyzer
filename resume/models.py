@@ -9,6 +9,7 @@ class ResumeModel(models.Model):
     extracted_text = models.TextField(blank = True)
     cleaned_text = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    skills = models.JSONField(default=list)
 
 class JobDescription(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -1,4 +1,14 @@
 import pdfplumber
+import re
+
+SKILLS = [
+    "python", "django", "fastapi", "flask",
+    "javascript", "react", "nodejs",
+    "postgresql", "mysql", "mongodb",
+    "redis", "docker", "aws",
+    "tensorflow", "pytorch", "opencv",
+    "git", "linux"
+]
 
 def extract_text_from_pdf(file):
     text = ""
@@ -7,7 +17,15 @@ def extract_text_from_pdf(file):
             text += page.extract_text() or ""
     return text
 
-import re
+
+def extract_skills(text):
+    found_skills = []
+
+    for skill in SKILLS:
+        if f" {skill} " in f" {text} ":
+            found_skills.append(skill)
+
+    return list(set(found_skills))
 
 def clean_text(text):
 

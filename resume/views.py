@@ -23,9 +23,11 @@ def CreateResume(request):
         text_data = extract_text_from_pdf(serializer.validated_data.get('resume_file'))
         cleaned_data = clean_text(text_data)
         cleaned_text = normalize_text(cleaned_data)
+        skills = extract_skills(cleaned_data)
         serializer.validated_data['extracted_text'] = text_data
         serializer.validated_data['cleaned_text'] = cleaned_text
         serializer.validated_data['user'] = request.user
+        serializer.validated_data['skills'] = skills
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     
