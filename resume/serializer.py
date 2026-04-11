@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from django.contrib.auth.models import User
-from .models import ResumeModel
+from .models import *
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,8 @@ class ResumeSerialzier(serializers.ModelSerializer):
         model = ResumeModel
         fields = ["id", "resume_file", "extracted_text", "created_at", "cleaned_text", "skills"]
         read_only_fields = ["extracted_text", "cleaned_text", "skills"]
+
+class DescriptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = JobDescription
+        fields = ["id", "title" , "company", "description"]
